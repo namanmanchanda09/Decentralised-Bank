@@ -6,8 +6,6 @@ import dbank from '../dbank.png';
 import Web3 from 'web3';
 import './App.css';
 
-//h0m3w0rk - add new tab to check accrued interest
-
 class App extends Component {
 
   async componentWillMount() {
@@ -16,26 +14,15 @@ class App extends Component {
 
   async loadBlockchainData(dispatch) {
 
-    //check if MetaMask exists
 
-      //assign to values to variables: web3, netId, accounts
-
-      //check if account is detected, then load balance&setStates, elsepush alert
-
-      //in try block load contracts
-
-    //if MetaMask not exists push alert
   }
 
   async deposit(amount) {
-    //check if this.state.dbank is ok
-      //in try block call dBank deposit();
+
   }
 
   async withdraw(e) {
-    //prevent button from default click
-    //check if this.state.dbank is ok
-    //in try block call dBank withdraw();
+
   }
 
   constructor(props) {
@@ -86,3 +73,4 @@ class App extends Component {
 }
 
 export default App;
+
