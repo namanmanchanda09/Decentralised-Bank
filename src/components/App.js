@@ -13,8 +13,34 @@ class App extends Component {
   }
 
   async loadBlockchainData(dispatch) {
+    if(typeof window.ethereum!=='undefined'){
+      const web3 = new Web3(window.ethereum)
+      const netId = await web3.eth.net.getId()
+      const accounts = await web3.eth.getAccounts()
 
+      //load balance
+      if(typeof accounts[0] !=='undefined'){
+        const balance = await web3.eth.getBalance(accounts[0])
+        this.setState({account: accounts[0], balance: balance, web3: web3})
+      } else {
+        window.alert('Please login with MetaMask')
+      }
 
+      //load contracts
+      try {
+        const token = new web3.eth.Contract(Token.abi, Token.networks[netId].address)
+        const dbank = new web3.eth.Contract(dBank.abi, dBank.networks[netId].address)
+        const dBankAddress = dBank.networks[netId].address
+        this.setState({token: token, dbank: dbank, dBankAddress: dBankAddress})
+        console.log(dBankAddress);
+      } catch (e) {
+        console.log('Error', e)
+        window.alert('Contracts not deployed to the current network')
+      }
+
+    } else {
+      window.alert('Please install MetaMask')
+    }
   }
 
   async deposit(amount) {
@@ -73,4 +99,5 @@ class App extends Component {
 }
 
 export default App;
+
 
