@@ -57,13 +57,13 @@ contract dBank {
     emit Withdraw(msg.sender, userBalance, depositTime, interest);
   }
 
-  function borrow() payable public {
+  // function borrow() payable public {
 
 
-  }
+  // }
 
-  function payOff() public {
+  // function payOff() public {
 
 
-  }
+  // }
 }
